@@ -119,6 +119,7 @@ return require('lazy').setup({
 	},
 
 	"lukas-reineke/indent-blankline.nvim",
+	{ "catppuccin/nvim", name = "catppuccin" },
 })
 
 
