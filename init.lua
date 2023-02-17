@@ -1,4 +1,4 @@
----- personal preferences
+--- personal preferences
 
 -- change leader key
 vim.g.mapleader=";"
@@ -29,8 +29,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- keep search terms in middle
-vim.keymap.set("n", "n", ":m 'nzzv")
-vim.keymap.set("n", "N", ":m 'Nzzv")
+vim.keymap.set("n", "n", "nzzv")
+vim.keymap.set("n", "N", "Nzzv")
 
 -- yank to system clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -44,49 +44,62 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 
----- Packer setup
+---- lazy.nvim setup
 
--- PackerSync shortcut
-vim.api.nvim_set_keymap("n", "<leader>ps", "<cmd> PackerSync <CR>", {})
+-- Lazy sync shortcut
+vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd> Lazy sync <CR>", {})
 
--- packer config
-return require('packer').startup(function(use)
-	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
-	use {
+-- download lazy.nvim if not installed
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+
+-- lazy config
+return require('lazy').setup({
+	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
 		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+		dependencies = { {'nvim-lua/plenary.nvim'} }
+	},
 
-	use({
+	{
 		'rose-pine/neovim',
 		as = 'rose-pine',
 		config = function()
 			require("rose-pine").setup()
 			vim.cmd('colorscheme rose-pine')
 		end
-	})
+	},
 
-	use {
+	{
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
-	}
+		build = ':TSUpdate'
+	},
 
-	use {
+	{
 		'nvim-tree/nvim-tree.lua',
-		requires = {
+		dependencies = {
 			'nvim-tree/nvim-web-devicons', -- optional, for file icons
 		},
 		tag = 'nightly' -- optional, updated every week. (see issue #1193)
-	}
+	},
 
-	use "windwp/nvim-autopairs"	
+	"windwp/nvim-autopairs",	
 
-	use {
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
-		requires = {
+		dependencies = {
 			-- LSP Support
 			{'neovim/nvim-lspconfig'},             -- Required
 			{'williamboman/mason.nvim'},           -- Optional
@@ -104,9 +117,9 @@ return require('packer').startup(function(use)
 			{'L3MON4D3/LuaSnip'},             -- Required
 			{'rafamadriz/friendly-snippets'}, -- Optional
 		}
-	}
+	},
 
-	use "lukas-reineke/indent-blankline.nvim"
-end)
+	"lukas-reineke/indent-blankline.nvim",
+})
 
 
