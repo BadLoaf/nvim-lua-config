@@ -29,8 +29,8 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- keep search terms in middle
-vim.keymap.set("n", "n", "nzzv")
-vim.keymap.set("n", "N", "Nzzv")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
 
 -- yank to system clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
@@ -63,8 +63,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
--- lazy config
+-- lazy.nvim install packages
 return require('lazy').setup({
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.1',
