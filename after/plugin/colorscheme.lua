@@ -1,3 +1,3 @@
-require("kanagawa").setup()
-vim.cmd('colorscheme kanagawa')
+require("tokyonight-night").setup()
+vim.cmd('colorscheme tokyonight-night')
 
