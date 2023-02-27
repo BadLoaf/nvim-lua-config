@@ -110,6 +110,9 @@ return require('lazy').setup({
 	},
 
 	"lukas-reineke/indent-blankline.nvim",
+	'neovim/nvim-lspconfig',
+	'jose-elias-alvarez/null-ls.nvim',
+	'MunifTanjim/prettier.nvim',
 
 	-- themes
 
