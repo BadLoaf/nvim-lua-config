@@ -1,3 +1,3 @@
-require("tokyonight-night").setup()
+require("tokyonight").setup()
 vim.cmd('colorscheme tokyonight-night')
 
