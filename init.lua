@@ -110,6 +110,12 @@ return require('lazy').setup({
 	},
 
 	"lukas-reineke/indent-blankline.nvim",
+	{
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	},
 
 	-- setup for prettier
 	'neovim/nvim-lspconfig',
