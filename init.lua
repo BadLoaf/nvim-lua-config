@@ -8,8 +8,8 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 
 -- set tab to display as 4 spaces, shifting to shift 4 spaces(>> and <<)
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- keep 8 lines on bottom/top when scrolling
 vim.opt.scrolloff = 8
@@ -120,11 +120,6 @@ return require('lazy').setup({
 
 	{
 		"folke/noice.nvim",
-		config = function()
-			require("noice").setup({
-				-- add any options here
-			})
-		end,
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 			"MunifTanjim/nui.nvim",
