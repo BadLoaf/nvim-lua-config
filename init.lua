@@ -46,6 +46,9 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 -- prettier shortcut
 vim.keymap.set("n", "<leader>p", "<cmd> Prettier <CR>")
 
+-- code action shortcut
+vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+
 
 ---- lazy.nvim setup
 
