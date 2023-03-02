@@ -135,7 +135,7 @@ return require('lazy').setup({
 	'MunifTanjim/prettier.nvim',
 
 	-- noice.nvim (optional, trying it out)
-
+--[[ 
 	{
 		"folke/noice.nvim",
 		dependencies = {
@@ -147,7 +147,7 @@ return require('lazy').setup({
 			"rcarriga/nvim-notify",
 		}
 	},
-
+ ]]
 	-- themes
 
 	{
