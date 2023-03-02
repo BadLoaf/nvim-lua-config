@@ -43,6 +43,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
+-- prettier shortcut
+vim.keymap.set("n", "<leader>p", "<cmd> Prettier <CR>")
+
 
 ---- lazy.nvim setup
 
@@ -117,6 +120,12 @@ return require('lazy').setup({
 		end
 	},
 
+	{ 'echasnovski/mini.surround', version = false,
+		config = function()
+			require('mini.surround').setup()
+		end
+	},
+
 	-- setup for prettier
 	'neovim/nvim-lspconfig',
 	'jose-elias-alvarez/null-ls.nvim',
@@ -136,15 +145,13 @@ return require('lazy').setup({
 		}
 	},
 
-
-
 	-- themes
 
 	{
 		'rose-pine/neovim',
 		as = 'rose-pine',
 	},
-	{ "catppuccin/nvim", name = "catppuccin" },
+	"catppuccin/nvim", 
 	'folke/tokyonight.nvim',
 	'morhetz/gruvbox',
 	"rebelot/kanagawa.nvim",
