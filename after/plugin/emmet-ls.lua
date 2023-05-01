@@ -15,4 +15,4 @@ lspconfig.emmet_ls.setup({
         },
       },
     }
-})
+}) 

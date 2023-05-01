@@ -55,6 +55,9 @@ vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 -- Lazy sync shortcut
 vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd> Lazy sync <CR>", {})
 
+-- neo-tree toggle
+vim.api.nvim_set_keymap("n", "<C-n>", "<cmd> NeoTreeRevealToggle <CR>", {})
+
 -- download lazy.nvim if not installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -83,14 +86,16 @@ return require('lazy').setup({
 	},
 
 	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
-		},
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
-	},
+		"nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        dependencies = { 
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-tree/nvim-web-devicons"}, -- not strictly required, but recommended
+            {"MunifTanjim/nui.nvim"},
+        }
+    },
 
-	"windwp/nvim-autopairs",	
+	"windwp/nvim-autopairs",
 
 	{
 		'VonHeikemen/lsp-zero.nvim',
@@ -135,8 +140,8 @@ return require('lazy').setup({
 	'MunifTanjim/prettier.nvim',
 
 	-- noice.nvim (optional, trying it out)
---[[ 
-	{
+
+	--[[ {
 		"folke/noice.nvim",
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
@@ -146,8 +151,8 @@ return require('lazy').setup({
 			--   If not available, we use `mini` as the fallback
 			"rcarriga/nvim-notify",
 		}
-	},
- ]]
+	}, ]]
+ 
 	-- themes
 
 	{
